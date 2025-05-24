@@ -1,3 +1,6 @@
+import sys
+input=sys.stdin.readline
+sys.setrecursionlimit(10**6)
 ###입력값
 n,m,p=map(int,input().split())
 graph=[[] for _ in range(n+1)]
@@ -9,7 +12,17 @@ for i in range(m):
     graph[y].append(x)
     graph[x].append(y)
 
-print(graph)
+def dfs(V,E,R):
+    global cnt
+    E[R] = cnt  # 방문 순서 저장
+    
+    for i in sorted(V[R],reverse=True):
+        if E[i]==0:
+            cnt+=1#방문했을 떄만 카운트 올리기
+            dfs(V,E,i)
+
+dfs(graph,visited,p)
 #24일 재귀로 구현하기
+print(*visited[1::])
 
 
