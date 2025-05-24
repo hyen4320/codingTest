@@ -18,7 +18,7 @@ def dfs(V,E,R):
     
     for i in sorted(V[R],reverse=True):
         if E[i]==0:
-            cnt+=1#방문했을 떄만 카운트 올리기
+            cnt+=1#방문했을 때만 카운트
             dfs(V,E,i)
 
 dfs(graph,visited,p)
